@@ -14,6 +14,19 @@ git clone git@gitlab.com:VeronicaAndersen/movie-characters-api.git
 ### IDE software
 To run and use this repository you can use a software that you like. This one was build in IntelliJ IDEA and are using spring boot with plugin Gradle.
 
+## Setting up database connection
+In the file located in src/main/resources/application.properties enter the following:
+```
+spring.datasource.url= jdbc:postgresql://localhost:5432/<NameOfYourDatabase>
+spring.datasource.username= <UsernameForDatabase>
+spring.datasource.password= <PasswordForDatabase>
+
+spring.jpa.properties.hibernate.dialect = org.hibernate.dialect.PostgreSQL95Dialect
+spring.jpa.hibernate.ddl-auto = create
+logging.level.org.hibernate.state = trace
+spring.jpa.show-sql = true
+```
+
 ## Deployment
 
 
