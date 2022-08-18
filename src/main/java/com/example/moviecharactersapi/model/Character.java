@@ -20,7 +20,7 @@ public class Character {
     @Column(name = "character_gender", length = 15)
     private String gender;
 
-    @Column(name = "character_picture", length = 100)
+    @Column(name = "character_picture", length = 200)
     private String picture;
 
     @ManyToMany(mappedBy = "characters")

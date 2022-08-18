@@ -18,12 +18,12 @@ public class Movie {
     private String genre;
 
     @Column(name = "movie_release_year", length = 4, nullable = false)
-    private String release_year;
+    private int release_year;
 
     @Column(name = "movie_director", length = 50, nullable = false)
     private String director;
 
-    @Column(name = "movie_picture", length = 100)
+    @Column(name = "movie_picture", length = 200)
     private String picture;
 
     @Column(name = "movie_trailer", length = 200)
