@@ -1,4 +1,4 @@
-package com.example.moviecharactersapi.model;
+package com.example.moviecharactersapi.models;
 
 import javax.persistence.*;
 import java.util.Set;
