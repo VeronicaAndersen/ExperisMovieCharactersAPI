@@ -19,4 +19,20 @@ public class Franchise {
 
     @OneToMany(mappedBy = "franchise")
     private Set<Movie> movie;
+
+    public int getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public Set<Movie> getMovie() {
+        return movie;
+    }
 }

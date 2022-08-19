@@ -40,4 +40,40 @@ public class Movie {
             inverseJoinColumns = {@JoinColumn(name = "character_id")}
     )
     private Set<MovieCharacter> movie_characters;
+
+    public int getId() {
+        return id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public String getGenre() {
+        return genre;
+    }
+
+    public int getRelease_year() {
+        return release_year;
+    }
+
+    public String getDirector() {
+        return director;
+    }
+
+    public String getPicture() {
+        return picture;
+    }
+
+    public String getTrailer() {
+        return trailer;
+    }
+
+    public Franchise getFranchise() {
+        return franchise;
+    }
+
+    public Set<MovieCharacter> getMovie_characters() {
+        return movie_characters;
+    }
 }
