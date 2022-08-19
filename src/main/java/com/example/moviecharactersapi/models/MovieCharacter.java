@@ -25,4 +25,28 @@ public class MovieCharacter {
 
     @ManyToMany(mappedBy = "movie_characters")
     private Set<Movie> movies;
+
+    public int getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getAlias() {
+        return alias;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public String getPicture() {
+        return picture;
+    }
+
+    public Set<Movie> getMovies() {
+        return movies;
+    }
 }
