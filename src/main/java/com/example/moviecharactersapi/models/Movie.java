@@ -35,9 +35,9 @@ public class Movie {
 
     @ManyToMany
     @JoinTable(
-            name = "movie_character",
+            name = "movie_movieCharacter",
             joinColumns = {@JoinColumn(name = "movie_id")},
             inverseJoinColumns = {@JoinColumn(name = "character_id")}
     )
-    private Set<Character> characters;
+    private Set<MovieCharacter> movieCharacters;
 }

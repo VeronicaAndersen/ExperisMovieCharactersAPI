@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.Set;
 
 @Entity
-public class Character {
+public class MovieCharacter {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
@@ -23,6 +23,6 @@ public class Character {
     @Column(name = "character_picture", length = 200)
     private String picture;
 
-    @ManyToMany(mappedBy = "characters")
+    @ManyToMany(mappedBy = "movieCharacters")
     private Set<Movie> movies;
 }
