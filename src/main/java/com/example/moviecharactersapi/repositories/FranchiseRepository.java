@@ -1,4 +1,4 @@
-package com.example.moviecharactersapi.repository;
+package com.example.moviecharactersapi.repositories;
 
 import com.example.moviecharactersapi.models.Franchise;
 import org.springframework.data.jpa.repository.JpaRepository;
