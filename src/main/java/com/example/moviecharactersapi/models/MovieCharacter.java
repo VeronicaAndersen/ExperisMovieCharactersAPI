@@ -23,6 +23,6 @@ public class MovieCharacter {
     @Column(name = "character_picture", length = 200)
     private String picture;
 
-    @ManyToMany(mappedBy = "movieCharacters")
+    @ManyToMany(mappedBy = "movie_characters")
     private Set<Movie> movies;
 }
