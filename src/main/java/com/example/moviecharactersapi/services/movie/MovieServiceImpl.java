@@ -31,7 +31,7 @@ public class MovieServiceImpl implements MovieService{
 
   @Override
   public Movie update(Movie entity) {
-    return null;
+    return movieRepository.save(entity);
   }
 
 

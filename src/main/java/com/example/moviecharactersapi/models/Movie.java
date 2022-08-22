@@ -8,7 +8,7 @@ public class Movie {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
-    @Column(name = "character_id")
+    @Column(name = "movie_id")
     private int id;
 
     @Column(name = "movie_title", length = 80, nullable = false)
@@ -35,7 +35,7 @@ public class Movie {
 
     @ManyToMany
     @JoinTable(
-            name = "movie_movie_character",
+            name = "movie_characters",
             joinColumns = {@JoinColumn(name = "movie_id")},
             inverseJoinColumns = {@JoinColumn(name = "character_id")}
     )

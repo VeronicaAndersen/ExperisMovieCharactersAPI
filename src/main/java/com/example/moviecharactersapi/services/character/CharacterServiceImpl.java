@@ -32,7 +32,7 @@ import java.util.Collection;
 
     @Override
     public MovieCharacter update(MovieCharacter entity) {
-      return null;
+      return characterRepository.save(entity);
     }
 
     @Override
