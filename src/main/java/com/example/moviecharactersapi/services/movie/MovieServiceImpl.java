@@ -26,7 +26,7 @@ public class MovieServiceImpl implements MovieService{
 
   @Override
   public Movie add(Movie entity) {
-    return null;
+    return movieRepository.save(entity);
   }
 
   @Override

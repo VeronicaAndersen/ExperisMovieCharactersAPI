@@ -29,8 +29,8 @@ public class MovieController {
 
   @PostMapping
   public ResponseEntity add(@RequestBody Movie movie) {
-    Movie newProf = movieService.add(movie);
-    URI uri = URI.create("movie/" + newProf.getId());
+    Movie newMovie = movieService.add(movie);
+    URI uri = URI.create("movie/" + newMovie.getId());
     return ResponseEntity.created(uri).build();
   }
 

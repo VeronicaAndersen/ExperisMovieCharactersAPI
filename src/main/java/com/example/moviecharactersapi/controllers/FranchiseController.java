@@ -28,17 +28,17 @@ public class FranchiseController {
     return ResponseEntity.ok(franchiseService.findById(id));
   }
   @PostMapping
-  public ResponseEntity add(@RequestBody Franchise franc) {
-    Franchise newProf = franchiseService.add(franc);
-    URI uri = URI.create("franchise/" + newProf.getId());
+  public ResponseEntity add(@RequestBody Franchise franchise) {
+    Franchise newFranchise = franchiseService.add(franchise);
+    URI uri = URI.create("franchise/" + newFranchise.getId());
     return ResponseEntity.created(uri).build();
   }
 
   @PutMapping("/{id}")
-  public ResponseEntity update(@RequestBody Franchise franc, @PathVariable int id) {
-    if(franc.getId() != id)
+  public ResponseEntity update(@RequestBody Franchise franchise, @PathVariable int id) {
+    if(franchise.getId() != id)
       return ResponseEntity.badRequest().build();
-    franchiseService.update(franc);
+    franchiseService.update(franchise);
     return ResponseEntity.noContent().build();
   }
 }

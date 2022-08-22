@@ -27,17 +27,17 @@ public class CharacterController {
     return ResponseEntity.ok(characterService.findById(id));
   }
   @PostMapping
-  public ResponseEntity add(@RequestBody MovieCharacter charac) {
-    MovieCharacter newProf = characterService.add(charac);
-    URI uri = URI.create("movie/" + newProf.getId());
+  public ResponseEntity add(@RequestBody MovieCharacter character) {
+    MovieCharacter newCharacter = characterService.add(character);
+    URI uri = URI.create("moviecharacters/" + newCharacter.getId());
     return ResponseEntity.created(uri).build();
   }
 
   @PutMapping("/{id}")
-  public ResponseEntity update(@RequestBody MovieCharacter charac, @PathVariable int id) {
-    if(charac.getId() != id)
+  public ResponseEntity update(@RequestBody MovieCharacter character, @PathVariable int id) {
+    if(character.getId() != id)
       return ResponseEntity.badRequest().build();
-    characterService.update(charac);
+    characterService.update(character);
     return ResponseEntity.noContent().build();
   }
 }
