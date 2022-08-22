@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
+import java.util.Collection;
 
 @RestController
 @RequestMapping(path = "api/v1/franchise")
@@ -20,7 +21,7 @@ public class FranchiseController {
   }
 
   @GetMapping
-  public ResponseEntity findAll() {
+  public ResponseEntity<Collection<Franchise>> findAll() {
     return ResponseEntity.ok(franchiseService.findAll());
   }
   @GetMapping("/{id}")

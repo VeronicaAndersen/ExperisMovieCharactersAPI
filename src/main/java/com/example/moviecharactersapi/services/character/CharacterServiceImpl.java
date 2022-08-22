@@ -36,9 +36,7 @@ import java.util.Collection;
     }
 
     @Override
-    public void deleteById(Integer integer) {
-
-    }
+    public void deleteById(Integer integer) {}
 
     @Override
     public boolean exists(int id) {
