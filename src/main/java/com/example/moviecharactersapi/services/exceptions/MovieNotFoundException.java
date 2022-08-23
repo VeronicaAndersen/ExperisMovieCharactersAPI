@@ -4,8 +4,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 @ResponseStatus(value = HttpStatus.NOT_FOUND)
-public class CharacterNotFoundException extends RuntimeException{
-  public CharacterNotFoundException(int id) {
-    super("No character exists with id: " + id);
+public class MovieNotFoundException extends RuntimeException{
+
+  public MovieNotFoundException(int id) {
+    super("No movie exists with id: " + id);
   }
 }

@@ -2,6 +2,7 @@ package com.example.moviecharactersapi.controllers;
 
 import com.example.moviecharactersapi.models.Franchise;
 import com.example.moviecharactersapi.models.Movie;
+import com.example.moviecharactersapi.models.MovieCharacter;
 import com.example.moviecharactersapi.services.character.CharacterService;
 import com.example.moviecharactersapi.services.franchise.FranchiseService;
 import org.springframework.http.ResponseEntity;
@@ -40,6 +41,14 @@ public class FranchiseController {
     if(franchise.getId() != id)
       return ResponseEntity.badRequest().build();
     franchiseService.update(franchise);
+    return ResponseEntity.noContent().build();
+  }
+
+  @DeleteMapping("/{id}")
+  public ResponseEntity deleteById(@RequestBody Franchise franchise, @PathVariable int id) {
+    if(franchise.getId() != id)
+      return ResponseEntity.badRequest().build();
+    franchiseService.deleteById(id);
     return ResponseEntity.noContent().build();
   }
 }

@@ -1,9 +1,14 @@
 package com.example.moviecharactersapi.services.movie;
 
+import com.example.moviecharactersapi.models.Franchise;
 import com.example.moviecharactersapi.models.Movie;
 import com.example.moviecharactersapi.repositories.MovieRepository;
+import com.example.moviecharactersapi.services.exceptions.CharacterNotFoundException;
+import com.example.moviecharactersapi.services.exceptions.FranchiseNotFoundException;
+import com.example.moviecharactersapi.services.exceptions.MovieNotFoundException;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.Collection;
 
 @Service
@@ -37,8 +42,16 @@ public class MovieServiceImpl implements MovieService{
 
 
   @Override
-  public void deleteById(Integer integer) {
-
+  @Transactional
+  public void deleteById(Integer id) throws MovieNotFoundException {
+    if(movieRepository.existsById(id)) {
+      // Set relationships to null so we can delete without referential problems
+      Movie movie = movieRepository.findById(id).get();
+      movie.getMovie_characters().forEach(s -> s.setMovies(null));
+      movieRepository.delete(movie);
+    }
+    else
+      throw new MovieNotFoundException(id);
   }
 
   @Override

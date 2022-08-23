@@ -5,6 +5,8 @@ import java.util.Set;
 
 @Entity
 public class Movie {
+
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
@@ -72,8 +74,15 @@ public class Movie {
     public Franchise getFranchise() {
         return franchise;
     }
+    public void setFranchise(Franchise franchise) {
+        this.franchise = franchise;
+    }
 
     public Set<MovieCharacter> getMovie_characters() {
         return movie_characters;
+    }
+
+    public void setMovie_characters(Set<MovieCharacter> movie_characters) {
+        this.movie_characters = movie_characters;
     }
 }

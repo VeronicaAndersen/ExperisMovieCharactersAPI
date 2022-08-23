@@ -14,27 +14,27 @@ INSERT INTO franchise (franchise_name, franchise_description) VALUES ('Warner Br
 INSERT INTO franchise (franchise_name, franchise_description) VALUES ('Pixar', 'Pixar Animation Studios, commonly known as just Pixar, is an American computer animation studio known for its critically and commercially successful computer animated feature films. It is based in Emeryville, California, United States, and is a subsidiary of Walt Disney Studios, which is another studio owned by The Walt Disney Company.');
 INSERT INTO franchise (franchise_name, franchise_description) VALUES ('Marvel Studios', 'Marvel Studios, LLC (originally known as Marvel Films from 1993 to 1996) is an American film and television production company that is a subsidiary of Walt Disney Studios, a division of the Walt Disney Company. Marvel Studios produces the Marvel Cinematic Universe films, based on characters that appear in Marvel Comics publications.');
 
-INSERT INTO movie_characters (movie_id, character_id) VALUES (1, 1); -- Harry
-INSERT INTO movie_characters (movie_id, character_id) VALUES (2, 1);
-INSERT INTO movie_characters (movie_id, character_id)VALUES (3, 1);
-
-INSERT INTO movie_characters (movie_id, character_id) VALUES (1, 2); -- Hermoine
-INSERT INTO movie_characters (movie_id, character_id) VALUES (2, 2);
-INSERT INTO movie_characters (movie_id, character_id) VALUES (3, 2);
-
-INSERT INTO movie_characters (movie_id, character_id) VALUES (1, 3); -- Ron
-INSERT INTO movie_characters (movie_id, character_id) VALUES (2, 3);
-INSERT INTO movie_characters (movie_id, character_id) VALUES (3, 3);
-
-INSERT INTO movie_characters (movie_id, character_id) VALUES (4, 5); -- Flo
-
-INSERT INTO movie_characters (movie_id, character_id) VALUES (5, 4); -- Black Widow
-
-UPDATE movie SET franchise_id = 1 WHERE movie_id = 1;
-UPDATE movie SET franchise_id = 1 WHERE movie_id = 2;
-UPDATE movie SET franchise_id = 1 WHERE movie_id = 3;
-UPDATE movie SET franchise_id = 2 WHERE movie_id = 4;
-UPDATE movie SET franchise_id = 3 WHERE movie_id = 5;
+-- INSERT INTO movie_characters (movie_id, character_id) VALUES (1, 1); -- Harry
+-- INSERT INTO movie_characters (movie_id, character_id) VALUES (2, 1);
+-- INSERT INTO movie_characters (movie_id, character_id)VALUES (3, 1);
+--
+-- INSERT INTO movie_characters (movie_id, character_id) VALUES (1, 2); -- Hermoine
+-- INSERT INTO movie_characters (movie_id, character_id) VALUES (2, 2);
+-- INSERT INTO movie_characters (movie_id, character_id) VALUES (3, 2);
+--
+-- INSERT INTO movie_characters (movie_id, character_id) VALUES (1, 3); -- Ron
+-- INSERT INTO movie_characters (movie_id, character_id) VALUES (2, 3);
+-- INSERT INTO movie_characters (movie_id, character_id) VALUES (3, 3);
+--
+-- INSERT INTO movie_characters (movie_id, character_id) VALUES (4, 5); -- Flo
+--
+-- INSERT INTO movie_characters (movie_id, character_id) VALUES (5, 4); -- Black Widow
+--
+-- UPDATE movie SET franchise_id = 1 WHERE movie_id = 1;
+-- UPDATE movie SET franchise_id = 1 WHERE movie_id = 2;
+-- UPDATE movie SET franchise_id = 1 WHERE movie_id = 3;
+-- UPDATE movie SET franchise_id = 2 WHERE movie_id = 4;
+-- UPDATE movie SET franchise_id = 3 WHERE movie_id = 5;
 
 -- UPDATE movie SET franchise_id = 1 WHERE movie_title LIKE '%Harry Potter%';
 

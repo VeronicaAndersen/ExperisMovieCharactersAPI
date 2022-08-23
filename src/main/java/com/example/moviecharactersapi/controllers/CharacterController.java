@@ -40,4 +40,11 @@ public class CharacterController {
     characterService.update(character);
     return ResponseEntity.noContent().build();
   }
+@DeleteMapping("/{id}")
+  public ResponseEntity deleteById(@RequestBody MovieCharacter character, @PathVariable int id) {
+    if(character.getId() != id)
+      return ResponseEntity.badRequest().build();
+    characterService.deleteById(id);
+    return ResponseEntity.noContent().build();
+  }
 }

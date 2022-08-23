@@ -35,4 +35,9 @@ public class Franchise {
     public Set<Movie> getMovie() {
         return movie;
     }
+
+    public void setMovie(Set<Movie> movie) {
+        this.movie = movie;
+    }
+
 }

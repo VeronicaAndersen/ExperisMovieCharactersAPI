@@ -1,6 +1,7 @@
 package com.example.moviecharactersapi.controllers;
 
 import com.example.moviecharactersapi.models.Movie;
+import com.example.moviecharactersapi.models.MovieCharacter;
 import com.example.moviecharactersapi.services.character.CharacterService;
 import com.example.moviecharactersapi.services.movie.MovieService;
 import org.springframework.http.ResponseEntity;
@@ -42,5 +43,13 @@ public class MovieController {
     movieService.update(movie);
     return ResponseEntity.noContent().build();
   }
+  @DeleteMapping("/{id}")
+  public ResponseEntity deleteById(@RequestBody Movie movie, @PathVariable int id) {
+    if(movie.getId() != id)
+      return ResponseEntity.badRequest().build();
+    movieService.deleteById(id);
+    return ResponseEntity.noContent().build();
+  }
+
 
 }
