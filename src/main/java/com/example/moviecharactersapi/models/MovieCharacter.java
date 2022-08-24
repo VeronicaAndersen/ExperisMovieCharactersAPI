@@ -1,9 +1,17 @@
 package com.example.moviecharactersapi.models;
 
+import com.fasterxml.jackson.annotation.JsonGetter;
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
+import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Entity
+@Getter
+@Setter
 public class MovieCharacter {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,31 +34,11 @@ public class MovieCharacter {
     @ManyToMany(mappedBy = "movie_characters")
     private Set<Movie> movies;
 
-    public int getId() {
-        return id;
-    }
 
-    public String getName() {
-        return name;
-    }
-
-    public String getAlias() {
-        return alias;
-    }
-
-    public String getGender() {
-        return gender;
-    }
-
-    public String getPicture() {
-        return picture;
-    }
-
-    public Set<Movie> getMovies() {
-        return movies;
-    }
-
-    public void setMovies(Set<Movie> movies) {
-        this.movies = movies;
+    @JsonGetter("movies")
+    public List<Integer> jsonGetMovies(){
+        if (movies == null)
+            return null;
+        return movies.stream().map(s -> s.getId()).collect(Collectors.toList());
     }
 }

@@ -1,9 +1,14 @@
 package com.example.moviecharactersapi.models;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 import java.util.Set;
 
 @Entity
+@Getter
+@Setter
 public class Franchise {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,26 +23,6 @@ public class Franchise {
     private String description;
 
     @OneToMany(mappedBy = "franchise")
-    private Set<Movie> movie;
-
-    public int getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public Set<Movie> getMovie() {
-        return movie;
-    }
-
-    public void setMovie(Set<Movie> movie) {
-        this.movie = movie;
-    }
+    private Set<Movie> movies;
 
 }

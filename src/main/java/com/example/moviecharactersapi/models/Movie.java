@@ -1,11 +1,15 @@
 package com.example.moviecharactersapi.models;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 import java.util.Set;
 
 @Entity
+@Getter
+@Setter
 public class Movie {
-
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -43,46 +47,4 @@ public class Movie {
     )
     private Set<MovieCharacter> movie_characters;
 
-    public int getId() {
-        return id;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public String getGenre() {
-        return genre;
-    }
-
-    public int getRelease_year() {
-        return release_year;
-    }
-
-    public String getDirector() {
-        return director;
-    }
-
-    public String getPicture() {
-        return picture;
-    }
-
-    public String getTrailer() {
-        return trailer;
-    }
-
-    public Franchise getFranchise() {
-        return franchise;
-    }
-    public void setFranchise(Franchise franchise) {
-        this.franchise = franchise;
-    }
-
-    public Set<MovieCharacter> getMovie_characters() {
-        return movie_characters;
-    }
-
-    public void setMovie_characters(Set<MovieCharacter> movie_characters) {
-        this.movie_characters = movie_characters;
-    }
 }

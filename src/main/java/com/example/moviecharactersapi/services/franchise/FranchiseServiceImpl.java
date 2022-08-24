@@ -47,7 +47,7 @@ public class FranchiseServiceImpl implements FranchiseService{
     if(franchiseRepository.existsById(id)) {
       // Set relationships to null so we can delete without referential problems
       Franchise franchise = franchiseRepository.findById(id).get();
-      franchise.getMovie().forEach(s -> s.setFranchise(null));
+      franchise.getMovies().forEach(s -> s.setFranchise(null));
       franchiseRepository.delete(franchise);
     }
     else

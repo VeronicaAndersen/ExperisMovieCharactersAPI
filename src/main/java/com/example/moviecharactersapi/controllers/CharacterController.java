@@ -1,5 +1,6 @@
 package com.example.moviecharactersapi.controllers;
 
+import com.example.moviecharactersapi.mappers.MovieCharacterMapper;
 import com.example.moviecharactersapi.models.Movie;
 import com.example.moviecharactersapi.models.MovieCharacter;
 import com.example.moviecharactersapi.services.character.CharacterService;
@@ -13,8 +14,11 @@ import java.net.URI;
 public class CharacterController {
   private final CharacterService characterService;
 
-  public CharacterController(CharacterService characterService) {
+  private final MovieCharacterMapper movieCharacterMapper;
+
+  public CharacterController(CharacterService characterService, MovieCharacterMapper movieCharacterMapper) {
     this.characterService = characterService;
+    this.movieCharacterMapper = movieCharacterMapper;
   }
 
   @GetMapping
