@@ -56,6 +56,6 @@ public class MovieServiceImpl implements MovieService{
 
   @Override
   public boolean exists(int id) {
-    return false;
+    return movieRepository.existsById(id);
   }
 }

@@ -1,9 +1,6 @@
 package com.example.moviecharactersapi.controllers;
 
 import com.example.moviecharactersapi.models.Franchise;
-import com.example.moviecharactersapi.models.Movie;
-import com.example.moviecharactersapi.models.MovieCharacter;
-import com.example.moviecharactersapi.services.character.CharacterService;
 import com.example.moviecharactersapi.services.franchise.FranchiseService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -31,6 +28,7 @@ public class FranchiseController {
   }
   @PostMapping
   public ResponseEntity add(@RequestBody Franchise franchise) {
+    if(franchiseService.exists(franchise.getId())) return ResponseEntity.badRequest().build();
     Franchise newFranchise = franchiseService.add(franchise);
     URI uri = URI.create("franchise/" + newFranchise.getId());
     return ResponseEntity.created(uri).build();

@@ -1,8 +1,6 @@
 package com.example.moviecharactersapi.controllers;
 
 import com.example.moviecharactersapi.models.Movie;
-import com.example.moviecharactersapi.models.MovieCharacter;
-import com.example.moviecharactersapi.services.character.CharacterService;
 import com.example.moviecharactersapi.services.movie.MovieService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -31,6 +29,7 @@ public class MovieController {
 
   @PostMapping
   public ResponseEntity add(@RequestBody Movie movie) {
+    if(movieService.exists(movie.getId())) return ResponseEntity.badRequest().build();
     Movie newMovie = movieService.add(movie);
     URI uri = URI.create("movie/" + newMovie.getId());
     return ResponseEntity.created(uri).build();

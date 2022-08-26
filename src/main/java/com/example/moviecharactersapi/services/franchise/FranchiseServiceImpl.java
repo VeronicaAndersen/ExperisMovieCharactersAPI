@@ -56,6 +56,6 @@ public class FranchiseServiceImpl implements FranchiseService{
 
   @Override
   public boolean exists(int id) {
-    return false;
+    return franchiseRepository.existsById(id);
   }
 }
