@@ -23,6 +23,7 @@ public abstract class MovieCharacterMapper {
 
     @Mapping(target="movies", source="movies")
     public abstract Collection<MovieCharacterDTO> movieToCharDTO(Collection<MovieCharacter> characters);
+
     @Mapping(target="movies", source="movies", qualifiedByName = "mapToMovieCharacters")
     public abstract MovieCharacter characterDTOToMovie(MovieCharacterDTO characterDTO);
 
