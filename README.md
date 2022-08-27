@@ -43,9 +43,13 @@ springdoc.swagger-ui.operationsSorter = method
 8. heroku container:release web --app <NameOfDeployment>    
 ```
 ### Heroku
-Configure Add-ons called Heroku Postgres in heroku under Overview
+Configure Add-ons called Heroku Postgres in heroku under Overview.
 
 <img alt="img.png" src="img.png" title="Add-ons"/>
 
+### Gitlab
+Make sure that both stages for build & deploy are passed under CI/CD Pipelines.
+
+![img_1.png](img_1.png)
 ## Contributors
 Johanna Olsson @johannaolsson & Veronica Andersen @VeronicaAndersen
