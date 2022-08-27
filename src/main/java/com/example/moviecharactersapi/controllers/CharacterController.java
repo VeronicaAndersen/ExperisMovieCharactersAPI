@@ -28,6 +28,11 @@ public class CharacterController {
     this.movieCharacterMapper = movieCharacterMapper;
   }
 
+  /**
+   * Gets all movie characters.
+   *
+   * @return Ok response.
+   */
   @Operation(summary = "Get all movie characters.")
   @ApiResponses(value = {
           @ApiResponse(responseCode = "200",
@@ -47,6 +52,12 @@ public class CharacterController {
     return ResponseEntity.ok(charactersDto);
   }
 
+  /**
+   * Gets movie character with specified ID.
+   *
+   * @param id Movie character ID to search for.
+   * @return Ok response.
+   */
   @Operation(summary = "Get a movie character by ID.")
   @ApiResponses(value = {
           @ApiResponse(responseCode = "200",
@@ -63,6 +74,13 @@ public class CharacterController {
     MovieCharacterDTO characterDTO = movieCharacterMapper.movieToCharDTO(characterService.findById(id));
     return ResponseEntity.ok(characterDTO);
   }
+
+  /**
+   * Post operation which adds a new movie character to the database.
+   *
+   * @param character Movie character that adds to database.
+   * @return Created response.
+   */
 
   @Operation(summary = "Adds a movie character.")
   @ApiResponses(value = {
@@ -82,6 +100,13 @@ public class CharacterController {
     return ResponseEntity.created(uri).build();
   }
 
+  /**
+   * Update operation which updates movie character with specified ID and given body.
+   *
+   * @param movieCharacterDTO body which stores the updated properties.
+   * @param id ID of character which should be updated.
+   * @return Response with no content.
+   */
   @Operation(summary = "Updates a movie character.")
   @ApiResponses(value = {
           @ApiResponse(responseCode = "204",
@@ -102,6 +127,12 @@ public class CharacterController {
     return ResponseEntity.noContent().build();
   }
 
+  /**
+   * Delete operation which deletes movie character by specified ID.
+   *
+   * @param id Movie character with specified ID to delete.
+   * @return Response with no content.
+   */
   @Operation(summary = "Deletes a movie character.")
   @ApiResponses(value = {
           @ApiResponse(responseCode = "204",

@@ -14,21 +14,38 @@ git clone git@gitlab.com:VeronicaAndersen/movie-characters-api.git
 ### IDE software
 To run and use this repository you can use a software that you like. This one was build in IntelliJ IDEA and are using spring boot with plugin Gradle.
 
-## Setting up database connection
+## Setting up locally database connection
 In the file located in src/main/resources/application.properties enter the following:
 ```
-spring.datasource.url= jdbc:postgresql://localhost:5432/<NameOfYourDatabase>
-spring.datasource.username= <UsernameForDatabase>
-spring.datasource.password= <PasswordForDatabase>
+spring.datasource.url = jdbc:postgresql://localhost:5432/<NameOfYourDatabase>
+spring.datasource.username = <UsernameForDatabase>
+spring.datasource.password = <PasswordForDatabase>
 
 spring.jpa.properties.hibernate.dialect = org.hibernate.dialect.PostgreSQL95Dialect
 spring.jpa.hibernate.ddl-auto = create
 logging.level.org.hibernate.state = trace
 spring.jpa.show-sql = true
+spring.sql.init.platform = postgres
+spring.jpa.defer-datasource-initialization = true
+spring.sql.init.mode = always
+springdoc.swagger-ui.operationsSorter = method
 ```
 
-## Deployment
+## Deployment [Docker & Heroku]
+```
+1. docker build -t <NameOfDocker> .    
+2. heroku login
+3. heroku create --region eu --app <NameOfDeployment>
+4. heroku container:login    
+5. heroku container push web --app <NameOfDeployment> 
+6. docker run -p 8085:8080 <NameOfDocker>    
+7. heroku container:push web --app <NameOfDeployment>   
+8. heroku container:release web --app <NameOfDeployment>    
+```
+### Heroku
+Configure Add-ons called Heroku Postgres in heroku under Overview
 
+<img alt="img.png" src="img.png" title="Add-ons"/>
 
 ## Contributors
 Johanna Olsson @johannaolsson & Veronica Andersen @VeronicaAndersen

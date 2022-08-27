@@ -28,6 +28,11 @@ public class FranchiseController {
     this.franchiseMapper = franchiseMapper;
   }
 
+  /**
+   * Gets all franchises.
+   *
+   * @return Ok response.
+   */
   @Operation(summary = "Get all franchises.")
   @ApiResponses(value = {
           @ApiResponse(responseCode = "200",
@@ -35,7 +40,7 @@ public class FranchiseController {
                   content = {
                           @Content(
                                   mediaType = "application/json",
-                                  array = @ArraySchema(schema = @Schema(implementation = FranchiseDTO.class))) }),
+                                  array = @ArraySchema(schema = @Schema(implementation = FranchiseDTO.class)))}),
           @ApiResponse(responseCode = "404",
                   description = "Franchise does not exist with supplied ID",
                   content = @Content)
@@ -47,12 +52,18 @@ public class FranchiseController {
     return ResponseEntity.ok(franchiseDTOS);
   }
 
+  /**
+   * Gets franchises with specified ID.
+   *
+   * @param id Franchises ID to search for.
+   * @return Ok response.
+   */
   @Operation(summary = "Get a franchise by ID.")
   @ApiResponses(value = {
           @ApiResponse(responseCode = "200",
                   description = "Success",
-                  content = { @Content(mediaType = "application/json",
-                          schema = @Schema(implementation = FranchiseDTO.class)) }),
+                  content = {@Content(mediaType = "application/json",
+                          schema = @Schema(implementation = FranchiseDTO.class))}),
           @ApiResponse(responseCode = "404",
                   description = "Franchise does not exist with supplied ID",
                   content = @Content)
@@ -63,7 +74,12 @@ public class FranchiseController {
     return ResponseEntity.ok(franchiseDTO);
   }
 
-
+  /**
+   * Post operation which adds a new franchise to the database.
+   *
+   * @param franchise Franchise that adds to database.
+   * @return Created response.
+   */
   @Operation(summary = "Adds a franchise.")
   @ApiResponses(value = {
           @ApiResponse(responseCode = "201",
@@ -71,21 +87,28 @@ public class FranchiseController {
                   content = {
                           @Content(
                                   mediaType = "application/json",
-                                  array = @ArraySchema(schema = @Schema(implementation = FranchiseDTO.class))) }),
+                                  array = @ArraySchema(schema = @Schema(implementation = FranchiseDTO.class)))}),
           @ApiResponse(responseCode = "400",
                   description = "Invalid ID supplied",
                   content = @Content)
   })
   @PostMapping
   public ResponseEntity add(@RequestBody Franchise franchise) {
-    if(franchiseService.exists(franchise.getId())) return ResponseEntity.badRequest().build();
+    if (franchiseService.exists(franchise.getId())) return ResponseEntity.badRequest().build();
     Franchise newFranchise = franchiseService.add(franchise);
     URI uri = URI.create("franchise/" + newFranchise.getId());
     return ResponseEntity.created(uri).build();
   }
 
+  /**
+   * Update operation which updates movie character with specified ID and given body.
+   *
+   * @param franchiseDTO body which stores the updated properties.
+   * @param id ID of franchise which should be updated.
+   * @return Response with no content.
+   */
   @Operation(summary = "Updates a franchise.")
-  @ApiResponses( value = {
+  @ApiResponses(value = {
           @ApiResponse(responseCode = "204",
                   description = "Franchise successfully updated",
                   content = @Content),
@@ -98,14 +121,20 @@ public class FranchiseController {
   })
   @PutMapping("/{id}")
   public ResponseEntity update(@RequestBody FranchiseDTO franchiseDTO, @PathVariable int id) {
-    if(franchiseDTO.getId() != id)
+    if (franchiseDTO.getId() != id)
       return ResponseEntity.badRequest().build();
     franchiseService.update(franchiseMapper.franDTOToMovie(franchiseDTO));
     return ResponseEntity.noContent().build();
   }
 
+  /**
+   * Delete operation which deletes franchise by specified ID.
+   *
+   * @param id Franchise with specified ID to delete.
+   * @return Response with no content.
+   */
   @Operation(summary = "Deletes a franchise.")
-  @ApiResponses( value = {
+  @ApiResponses(value = {
           @ApiResponse(responseCode = "204",
                   description = "Franchise successfully deleted",
                   content = @Content),
@@ -118,7 +147,7 @@ public class FranchiseController {
   })
   @DeleteMapping("/{id}")
   public ResponseEntity deleteById(@RequestBody Franchise franchise, @PathVariable int id) {
-    if(franchise.getId() != id)
+    if (franchise.getId() != id)
       return ResponseEntity.badRequest().build();
     franchiseService.deleteById(id);
     return ResponseEntity.noContent().build();
