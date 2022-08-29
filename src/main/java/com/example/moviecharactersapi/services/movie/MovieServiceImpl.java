@@ -21,7 +21,7 @@ public class MovieServiceImpl implements MovieService{
 
   @Override
   public Movie findById(Integer id) {
-    return movieRepository.findById(id).get();
+    return movieRepository.findById(id).orElseThrow(()-> new MovieNotFoundException(id));
   }
 
   @Override
@@ -43,15 +43,9 @@ public class MovieServiceImpl implements MovieService{
 
   @Override
   @Transactional
-  public void deleteById(Integer id) throws MovieNotFoundException {
-    if(movieRepository.existsById(id)) {
-      // Set relationships to null so we can delete without referential problems
-      Movie movie = movieRepository.findById(id).get();
-      movie.getMovie_characters().forEach(s -> s.setMovies(null));
-      movieRepository.delete(movie);
-    }
-    else
-      throw new MovieNotFoundException(id);
+  public void deleteById(Integer id) throws MovieNotFoundException{
+    if(movieRepository.findById(id).isEmpty()) throw new MovieNotFoundException(id);
+    movieRepository.deleteById(id);
   }
 
   @Override

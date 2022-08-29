@@ -21,7 +21,7 @@ public class FranchiseServiceImpl implements FranchiseService{
 
   @Override
   public Franchise findById(Integer id) {
-    return franchiseRepository.findById(id).get();
+    return franchiseRepository.findById(id).orElseThrow(()-> new FranchiseNotFoundException(id));
   }
 
   @Override
@@ -42,16 +42,11 @@ public class FranchiseServiceImpl implements FranchiseService{
 
 
   @Override
-  @Transactional
   public void deleteById(Integer id) throws FranchiseNotFoundException {
-    if(franchiseRepository.existsById(id)) {
-      // Set relationships to null so we can delete without referential problems
-      Franchise franchise = franchiseRepository.findById(id).get();
-      franchise.getMovies().forEach(s -> s.setFranchise(null));
-      franchiseRepository.delete(franchise);
-    }
-    else
-      throw new FranchiseNotFoundException(id);
+    if(franchiseRepository.findById(id).isEmpty()) throw new FranchiseNotFoundException(id);
+    Franchise franchise = franchiseRepository.findById(id).get();
+    franchise.getMovies().forEach(m -> m.setFranchise(null));
+    franchiseRepository.deleteById(id);
   }
 
   @Override

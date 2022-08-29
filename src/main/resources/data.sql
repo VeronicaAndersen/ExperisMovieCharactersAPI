@@ -45,27 +45,27 @@ INSERT INTO franchise (franchise_name, franchise_description)
 
 
 -- Insert data to manyToMany relation for characters in movies
--- INSERT INTO movie_characters (movie_id, character_id) VALUES (1, 1); -- Harry
--- INSERT INTO movie_characters (movie_id, character_id) VALUES (2, 1);
--- INSERT INTO movie_characters (movie_id, character_id)VALUES (3, 1);
---
--- INSERT INTO movie_characters (movie_id, character_id) VALUES (1, 2); -- Hermoine
--- INSERT INTO movie_characters (movie_id, character_id) VALUES (2, 2);
--- INSERT INTO movie_characters (movie_id, character_id) VALUES (3, 2);
---
--- INSERT INTO movie_characters (movie_id, character_id) VALUES (1, 3); -- Ron
--- INSERT INTO movie_characters (movie_id, character_id) VALUES (2, 3);
--- INSERT INTO movie_characters (movie_id, character_id) VALUES (3, 3);
---
--- INSERT INTO movie_characters (movie_id, character_id) VALUES (4, 5); -- Flo
---
--- INSERT INTO movie_characters (movie_id, character_id) VALUES (5, 4); -- Black Widow
+INSERT INTO movie_characters (movie_id, character_id) VALUES (1, 1); -- Harry
+INSERT INTO movie_characters (movie_id, character_id) VALUES (2, 1);
+INSERT INTO movie_characters (movie_id, character_id)VALUES (3, 1);
+
+INSERT INTO movie_characters (movie_id, character_id) VALUES (1, 2); -- Hermoine
+INSERT INTO movie_characters (movie_id, character_id) VALUES (2, 2);
+INSERT INTO movie_characters (movie_id, character_id) VALUES (3, 2);
+
+INSERT INTO movie_characters (movie_id, character_id) VALUES (1, 3); -- Ron
+INSERT INTO movie_characters (movie_id, character_id) VALUES (2, 3);
+INSERT INTO movie_characters (movie_id, character_id) VALUES (3, 3);
+
+INSERT INTO movie_characters (movie_id, character_id) VALUES (4, 5); -- Flo
+
+INSERT INTO movie_characters (movie_id, character_id) VALUES (5, 4); -- Black Widow
 
 
 -- Update franchise_id in movie
--- UPDATE movie SET franchise_id = 1 WHERE movie_title LIKE '%Harry Potter%';
--- UPDATE movie SET franchise_id = 2 WHERE movie_id = 4;
--- UPDATE movie SET franchise_id = 3 WHERE movie_id = 5;
+UPDATE movie SET franchise_id = 1 WHERE movie_title LIKE '%Harry Potter%';
+UPDATE movie SET franchise_id = 2 WHERE movie_id = 4;
+UPDATE movie SET franchise_id = 3 WHERE movie_id = 5;
 
 
 
