@@ -4,6 +4,7 @@ import com.example.moviecharactersapi.mappers.FranchiseMapper;
 import com.example.moviecharactersapi.models.Franchise;
 import com.example.moviecharactersapi.models.dtos.franchise.FranchiseDTO;
 import com.example.moviecharactersapi.services.franchise.FranchiseService;
+import com.example.moviecharactersapi.util.ApiErrorResponse;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.ArraySchema;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -43,7 +44,8 @@ public class FranchiseController {
                                   array = @ArraySchema(schema = @Schema(implementation = FranchiseDTO.class)))}),
           @ApiResponse(responseCode = "404",
                   description = "Franchise does not exist with supplied ID",
-                  content = @Content)
+                  content = { @Content(mediaType = "application/json",
+                          schema = @Schema(implementation = ApiErrorResponse.class)) })
   })
 
   @GetMapping
@@ -66,7 +68,8 @@ public class FranchiseController {
                           schema = @Schema(implementation = FranchiseDTO.class))}),
           @ApiResponse(responseCode = "404",
                   description = "Franchise does not exist with supplied ID",
-                  content = @Content)
+                  content = { @Content(mediaType = "application/json",
+                          schema = @Schema(implementation = ApiErrorResponse.class)) })
   })
   @GetMapping("/{id}")
   public ResponseEntity<FranchiseDTO> findById(@PathVariable int id) {
@@ -90,7 +93,8 @@ public class FranchiseController {
                                   array = @ArraySchema(schema = @Schema(implementation = FranchiseDTO.class)))}),
           @ApiResponse(responseCode = "400",
                   description = "Invalid ID supplied",
-                  content = @Content)
+                  content = { @Content(mediaType = "application/json",
+                          schema = @Schema(implementation = ApiErrorResponse.class)) })
   })
   @PostMapping
   public ResponseEntity add(@RequestBody Franchise franchise) {
@@ -117,7 +121,8 @@ public class FranchiseController {
                   content = @Content),
           @ApiResponse(responseCode = "404",
                   description = "Franchise not found with supplied ID",
-                  content = @Content)
+                  content = { @Content(mediaType = "application/json",
+                          schema = @Schema(implementation = ApiErrorResponse.class)) })
   })
   @PutMapping("/{id}")
   public ResponseEntity update(@RequestBody FranchiseDTO franchiseDTO, @PathVariable int id) {
@@ -143,7 +148,8 @@ public class FranchiseController {
                   content = @Content),
           @ApiResponse(responseCode = "404",
                   description = "Franchise not found with supplied ID",
-                  content = @Content)
+                  content = { @Content(mediaType = "application/json",
+                          schema = @Schema(implementation = ApiErrorResponse.class)) })
   })
   @DeleteMapping("/{id}")
   public ResponseEntity deleteById(@RequestBody Franchise franchise, @PathVariable int id) {

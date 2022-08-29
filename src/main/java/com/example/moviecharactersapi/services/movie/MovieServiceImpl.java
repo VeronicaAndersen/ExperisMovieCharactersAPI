@@ -1,10 +1,7 @@
 package com.example.moviecharactersapi.services.movie;
 
-import com.example.moviecharactersapi.models.Franchise;
 import com.example.moviecharactersapi.models.Movie;
 import com.example.moviecharactersapi.repositories.MovieRepository;
-import com.example.moviecharactersapi.services.exceptions.CharacterNotFoundException;
-import com.example.moviecharactersapi.services.exceptions.FranchiseNotFoundException;
 import com.example.moviecharactersapi.services.exceptions.MovieNotFoundException;
 import org.springframework.stereotype.Service;
 
@@ -12,7 +9,7 @@ import javax.transaction.Transactional;
 import java.util.Collection;
 
 @Service
-public class MovieServiceImpl implements MovieService{
+public class MovieServiceImpl implements MovieService {
   private final MovieRepository movieRepository;
 
   public MovieServiceImpl(MovieRepository movieRepository) {
@@ -21,8 +18,9 @@ public class MovieServiceImpl implements MovieService{
 
   @Override
   public Movie findById(Integer id) {
-    return movieRepository.findById(id).orElseThrow(()-> new MovieNotFoundException(id));
+    return movieRepository.findById(id).orElseThrow(() -> new MovieNotFoundException(id));
   }
+
 
   @Override
   public Collection<Movie> findAll() {
@@ -39,12 +37,10 @@ public class MovieServiceImpl implements MovieService{
     return movieRepository.save(entity);
   }
 
-
-
   @Override
   @Transactional
-  public void deleteById(Integer id) throws MovieNotFoundException{
-    if(movieRepository.findById(id).isEmpty()) throw new MovieNotFoundException(id);
+  public void deleteById(Integer id) throws MovieNotFoundException {
+    if (movieRepository.findById(id).isEmpty()) throw new MovieNotFoundException(id);
     movieRepository.deleteById(id);
   }
 

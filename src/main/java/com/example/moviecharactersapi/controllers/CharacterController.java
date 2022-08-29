@@ -4,6 +4,7 @@ import com.example.moviecharactersapi.mappers.MovieCharacterMapper;
 import com.example.moviecharactersapi.models.MovieCharacter;
 import com.example.moviecharactersapi.models.dtos.movieCharacter.MovieCharacterDTO;
 import com.example.moviecharactersapi.services.character.CharacterService;
+import com.example.moviecharactersapi.util.ApiErrorResponse;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.ArraySchema;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -43,7 +44,8 @@ public class CharacterController {
                                   array = @ArraySchema(schema = @Schema(implementation = MovieCharacterDTO.class)))}),
           @ApiResponse(responseCode = "404",
                   description = "Movie character does not exist with supplied ID.",
-                  content = @Content)
+                  content = { @Content(mediaType = "application/json",
+                          schema = @Schema(implementation = ApiErrorResponse.class)) })
   })
 
   @GetMapping
@@ -66,7 +68,8 @@ public class CharacterController {
                           schema = @Schema(implementation = MovieCharacterDTO.class))}),
           @ApiResponse(responseCode = "404",
                   description = "Movie character does not exist with supplied ID.",
-                  content = @Content)
+                  content = { @Content(mediaType = "application/json",
+                          schema = @Schema(implementation = ApiErrorResponse.class)) })
   })
 
   @GetMapping("/{id}")
@@ -90,7 +93,8 @@ public class CharacterController {
                           schema = @Schema(implementation = MovieCharacterDTO.class))}),
           @ApiResponse(responseCode = "404",
                   description = "Movie character is invalid ID.",
-                  content = @Content)
+                  content = { @Content(mediaType = "application/json",
+                          schema = @Schema(implementation = ApiErrorResponse.class)) })
   })
   @PostMapping
   public ResponseEntity add(@RequestBody MovieCharacter character) {
@@ -117,7 +121,8 @@ public class CharacterController {
                   content = @Content),
           @ApiResponse(responseCode = "404",
                   description = "Movie character not found with supplied ID.",
-                  content = @Content)
+                  content = { @Content(mediaType = "application/json",
+                          schema = @Schema(implementation = ApiErrorResponse.class)) })
   })
 
   @PutMapping("/{id}")
@@ -143,7 +148,8 @@ public class CharacterController {
                   content = @Content),
           @ApiResponse(responseCode = "404",
                   description = "Movie character not found with supplied ID.",
-                  content = @Content)
+                  content = { @Content(mediaType = "application/json",
+                          schema = @Schema(implementation = ApiErrorResponse.class)) })
   })
 
   @DeleteMapping("/{id}")

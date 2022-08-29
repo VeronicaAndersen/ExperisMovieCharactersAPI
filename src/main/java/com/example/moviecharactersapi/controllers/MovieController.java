@@ -94,7 +94,9 @@ public class MovieController {
                                   mediaType = "application/json",
                                   array = @ArraySchema(schema = @Schema(implementation = MovieDTO.class)))}),
           @ApiResponse(responseCode = "400",
-                  description = "Invalid ID supplied")
+                  description = "Invalid ID supplied",
+                  content = { @Content(mediaType = "application/json",
+                          schema = @Schema(implementation = ApiErrorResponse.class)) })
   })
 
   @PostMapping
@@ -123,7 +125,8 @@ public class MovieController {
                           schema = @Schema(implementation = ErrorAttributeOptions.class))}),
           @ApiResponse(responseCode = "404",
                   description = "Movie not found with supplied ID",
-                  content = @Content)
+                  content = { @Content(mediaType = "application/json",
+                          schema = @Schema(implementation = ApiErrorResponse.class)) })
   })
   @PutMapping("/{id}")
   public ResponseEntity update(@RequestBody MovieDTO movieDTO, @PathVariable int id) {
@@ -150,7 +153,8 @@ public class MovieController {
                           schema = @Schema(implementation = ErrorAttributeOptions.class))}),
           @ApiResponse(responseCode = "404",
                   description = "Movie not found with supplied ID",
-                  content = @Content)
+                  content = { @Content(mediaType = "application/json",
+                          schema = @Schema(implementation = ApiErrorResponse.class)) })
   })
 
   @DeleteMapping("/{id}")
