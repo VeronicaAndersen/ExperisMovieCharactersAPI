@@ -37,10 +37,9 @@ springdoc.swagger-ui.operationsSorter = method
 2. heroku login
 3. heroku create --region eu --app <NameOfDeployment>
 4. heroku container:login    
-5. heroku container push web --app <NameOfDeployment> 
-6. docker run -p 8085:8080 <NameOfDocker>    
-7. heroku container:push web --app <NameOfDeployment>   
-8. heroku container:release web --app <NameOfDeployment>    
+5. docker run -p 8085:8080 <NameOfDocker>    
+6. heroku container:push web --app <NameOfDeployment>   
+7. heroku container:release web --app <NameOfDeployment>    
 ```
 ### Heroku
 Configure Add-ons called Heroku Postgres in heroku under Overview.
