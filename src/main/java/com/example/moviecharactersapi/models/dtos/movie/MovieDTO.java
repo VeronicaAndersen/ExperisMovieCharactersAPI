@@ -2,6 +2,7 @@ package com.example.moviecharactersapi.models.dtos.movie;
 
 import lombok.Data;
 
+import javax.persistence.criteria.CriteriaBuilder;
 import java.util.Set;
 
 @Data
@@ -14,5 +15,5 @@ public class MovieDTO {
     private String picture;
     private String trailer;
     private Set<Integer> movie_characters;
-    private int franchise;
+    private Integer franchise;
 }

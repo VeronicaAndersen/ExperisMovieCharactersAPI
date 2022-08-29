@@ -22,7 +22,7 @@ public abstract class MovieMapper {
     @Autowired
     private FranchiseService franchiseService;
 
-    @Mapping(target="franchise", source="franchise", qualifiedByName = "mapFromFranchise")
+    @Mapping(target="franchise", source="franchise.id")
     @Mapping(target="movie_characters", source="movie_characters", qualifiedByName = "mapFromCharacters")
     public abstract MovieDTO movieToMovieDto(Movie movie);
 
@@ -46,6 +46,7 @@ public abstract class MovieMapper {
 
     @Named("mapFromFranchise")
     Integer mapFromFranchise(Franchise franchise){
+        if (franchise ==  null) return null;
         return franchise.getId();
     }
 

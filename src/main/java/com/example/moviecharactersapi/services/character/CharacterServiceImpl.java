@@ -43,18 +43,14 @@ import org.slf4j.LoggerFactory;
       return characterRepository.save(entity);
     }
 
-    @Override
-    @Transactional
-    public void deleteById(Integer id) throws CharacterNotFoundException{
-      if(characterRepository.existsById(id)) {
-        // Set relationships to null so we can delete without referential problems
-        MovieCharacter character = characterRepository.findById(id).get();
-        character.getMovies().forEach(s -> s.setMovie_characters(null));
-        characterRepository.delete(character);
-      }
-      else
-        throw new CharacterNotFoundException(id);
-    }
+  @Override
+  @Transactional
+  public void deleteById(Integer id) throws CharacterNotFoundException{
+    if(characterRepository.findById(id).isEmpty()) throw new CharacterNotFoundException(id);
+    MovieCharacter character = characterRepository.findById(id).get();
+    character.getMovies().forEach(m -> m.getMovie_characters().remove(character));
+    characterRepository.deleteById(id);
+  }
 
 
   @Override
